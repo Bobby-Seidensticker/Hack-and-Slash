@@ -1,0 +1,24 @@
+{
+  "application": "hackandslash",
+  "cloneable": false,
+  "icon": "images/icon.png",
+  "owner": "bobbys",
+  "readers": [
+    "public",
+    "mckoss",
+    "bobbys",
+    "bobbys2",
+    "cwkoss"
+  ],
+  "referers": [],
+  "secureData": false,
+  "tags": [],
+  "title": "MTG Hack and Slash",
+  "url": "http://hackandslash.pageforest.com/",
+  "writers": [
+    "bobbys",
+    "mckoss",
+    "bobbys2",
+    "cwkoss"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "files": {
+    "src/all.js": [
+      "src/namespace-plus.js",
+      { "path": "src/main.js", "namespace": "com.pageforest.hackandslash" },
+      { "path": "src/abstract.js", "namespace": "com.pageforest.hackandslash.abstract" }
+    ]
+  },
+  "minify": false,
+  "uploadIndividualFiles": false
+}
