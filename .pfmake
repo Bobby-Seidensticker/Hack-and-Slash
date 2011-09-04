@@ -3,7 +3,8 @@
     "src/all.js": [
       "src/namespace-plus.js",
       { "path": "src/main.js", "namespace": "com.pageforest.hackandslash" },
-      { "path": "src/abstract.js", "namespace": "com.pageforest.hackandslash.abstract" }
+      { "path": "src/abstract.js", "namespace": "com.pageforest.hackandslash.abstract" },
+      { "path": "src/static.js", "namespace": "com.pageforest.hackandslash.static" }
     ]
   },
   "minify": false,
