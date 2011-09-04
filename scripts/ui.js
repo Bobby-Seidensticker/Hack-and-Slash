@@ -11,6 +11,12 @@ function onUpdate() {
 
 
 function drawMap(map) {
+    /*
+    t - track - drawn in grey
+    w - wall - drawn in blue
+    f - floor - drawn in dark yellow
+    */
+
     validateMap(map);
     var viewWidth = 768; 
     var tilesize = viewWidth / map[0].length; 
@@ -23,47 +29,20 @@ function drawMap(map) {
         for(var j = 0; j < map[0].length; j++) {
             var line = map[i];
 
-            if (line.charAt(j) == "u") {
-                ctx.fillStyle = "rgb(255, 255, 255)";
+            if (line.charAt(j) == "t") {
+                ctx.fillStyle = "rgb(155, 155, 155)";
             } else if(line.charAt(j) == "w") {
-                ctx.fillStyle = "rgb(50, 0, 0)";
-            } else if (line.charAt(j) == "b") {
                 ctx.fillStyle = "rgb(0, 0, 200)";
+            } else if (line.charAt(j) == "f") {
+                ctx.fillStyle = "rgb(100, 100, 0)";
             } else {
                 ctx.fillStyle = "rgb(255, 255, 255)";
+                console.log("AWW SHIT: drawMap - wtf is " + line.charAt(j));
             }
             ctx.fillRect (j * tilesize, i*tilesize,
                      (j+1)*tilesize, (i+1)*tilesize);
-            
-            /*if (line.charAt(j) == "b") {
-                ctx.drawImage(block, i*tilesize, j*tilesize);
-            }*/
-        
-        if(line.charAt(j) == "u" || 
-           line.charAt(j) == "r" || 
-           line.charAt(j) == "m"){
-        //draw triangle indicating direction
-                //ctx.fillStyle = "rgb(0,0,0)";
-                switch(dir) {
-                    case 0:
-                    ctx.drawImage(guy0, i*tilesize, j*tilesize);
-                    break;
-                    case 1:
-                    ctx.drawImage(guy1, i*tilesize, j*tilesize);
-                    break;
-                    case 2:
-                    ctx.drawImage(guy2, i*tilesize, j*tilesize);
-                    break;
-                    case 3:
-                    ctx.drawImage(guy3, i*tilesize, j*tilesize);
-                    break;
-                    
-                }
-                ctx.fill();    
-            }
         }
     }
-    console.log(map);
 }
 
 
