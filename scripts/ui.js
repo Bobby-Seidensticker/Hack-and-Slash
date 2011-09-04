@@ -1,15 +1,6 @@
-var clientLib = require('com.pageforest.client');
-var abs = require('com.pageforest.hackandslash.abstract');
-
 exports.extend({
-    'onReady': onReady,
+    'drawWorld': drawWorld
 });
-
-function getDocid() {
-    if (client.username) {
-        return client.username;
-    }
-}
 
 var client;
 var app = {
@@ -25,31 +16,12 @@ var app = {
         };
     }
 };
+var tickInterval;
 
-function onReady () {
-    handleAppCache();
-    client = new clientLib.Client(app);
-    client.addAppBar();
-    abs.init(client, exports);
-    $(window).bind('keydown', onKeyDown);
-}
 
-// For offline - capable applications
-function handleAppCache() {
-    if (typeof applicationCache == 'undefined') {
-        return;
-    }
-    if (applicationCache.status == applicationCache.UPDATEREADY) {
-        applicationCache.swapCache();
-        location.reload();
-        return;
-    }
-    applicationCache.addEventListener('updateready', handleAppCache, false);
-}
 
 function onUpdate() {
-    console.log("onUpdate");
-    drawWorld();
+    
 }
 
 function onKeyDown(e) {
@@ -97,7 +69,7 @@ guy3.src = 'images/guy3.png';
 */
 
 function drawWorld() {
-    $('#bulletCount').text('Bullets Remaining: ' + ms.getPlayerInfo().bullets);
+    var map = sta.map;
     var tilesize = 24; 
     var canvas = document.getElementById('canvasWorld');
     canvas.width = canvas.width;
@@ -152,4 +124,23 @@ function drawWorld() {
         }
     }
     console.log(map);
+}
+
+// For offline - capable applications
+function handleAppCache() {
+    if (typeof applicationCache == 'undefined') {
+        return;
+    }
+    if (applicationCache.status == applicationCache.UPDATEREADY) {
+        applicationCache.swapCache();
+        location.reload();
+        return;
+    }
+    applicationCache.addEventListener('updateready', handleAppCache, false);
+}
+
+function getDocid() {
+    if (client.username) {
+        return client.username;
+    }
 }
