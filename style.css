@@ -10,8 +10,12 @@ body {
   background-color: white;
 }
 
-.viewport canvas#background {
+.viewport canvas#map {
   position: absolute;
   left: 256px;
-  width: 768px;
+}
+
+.viewport canvas#sidebar {
+  position: absolute;
+  left: 0px;
 }
