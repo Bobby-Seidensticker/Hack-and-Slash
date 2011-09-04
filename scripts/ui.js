@@ -1,5 +1,5 @@
 exports.extend({
-    'drawWorld': drawWorld
+    'drawMap': drawMap
 });
 
 var client;
@@ -68,19 +68,17 @@ var guy3 = new Image();
 guy3.src = 'images/guy3.png';
 */
 
-function drawWorld() {
-    var map = sta.map;
-    var tilesize = 24; 
-    var canvas = document.getElementById('canvasWorld');
-    canvas.width = canvas.width;
+function drawMap(map) {
+    validateMap(map);
+    var viewWidth = 768; 
+    var tilesize = viewWidth / map[0].length; 
+    var canvas = document.getElementById('map');
+    canvas.width = 768;
+    canvas.height = tilesize * map.length;
     var ctx = canvas.getContext('2d');
-    ctx.fillStyle = "rgb(255,255,255)";
-    ctx.fillRect (0, 0, 360, 360);
 
-    var dir = ms.getPlayerInfo().dir;
-    var map = ms.getLocalRegion();
-    for (var i = 0; i < 15; i++) {
-        for(var j = 0; j < 15; j++) {
+    for (var i = 0; i < map.length; i++) {
+        for(var j = 0; j < map[0].length; j++) {
             var line = map[i];
 
             if (line.charAt(j) == "u") {
@@ -124,6 +122,18 @@ function drawWorld() {
         }
     }
     console.log(map);
+}
+
+function validateMap(map) {
+    var baseline = map[0].length;
+    for(var i = 0; i < map.length; i++) {
+        if(map[i].length != baseline){
+            console.log("AWW SHIT: line " + i + " of map is not the same as the others");
+        }
+        if(map[i].search("t") == -1) {
+            console.log("AWW SHIT: line " + i + " does not have track");
+        }
+    }
 }
 
 // For offline - capable applications

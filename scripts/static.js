@@ -218,11 +218,11 @@ function map() {
 				 "wwwwwwfffffffffftfffffffffwwwwww",
 				 "wwwwwwfffffffffftfffffffffwwwwww",
 				 "wwwwwwfffffffffftfffffffffwwwwww",
-				 "wwwwwwfffffffffftfffffffffwwwwww",
-				 "wwwwwwfffffffffftfffffffffwwwwww",
-				 "wwwwwwfffffffffftfffffffffwwwwww",
-				 "wwwwwwfffffffffftfffffffffwwwwww",
-				 "wwwwwwfffffffffftfffffffffwwwwww"
+				 "wwwwwwfffffffffftffffffffffwwwww",
+				 "wwwwwwfffffffffftfffffffffffwwww",
+				 "wwwwwwfffffffffftffffffffffffwww",
+				 "wwwwwwfffffffffftfffffffffffffww",
+				 "wwwwwwfffffffffftffffffffffffffw"
 				];
 	return map1;
 }
