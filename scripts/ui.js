@@ -1,14 +1,17 @@
 var abs = require('com.pageforest.hackandslash.abstract');
 
+var $map = $('#map');
+var $sidebar = $('#sidebar');
+var viewSize = 768;
+
 exports.extend({
     'drawMap': drawMap,
     'onUpdate': onUpdate
 });
 
 function onUpdate() {
-    
+    $map.css('top', -abs.mapSize[1] + viewSize + abs.player.pos);
 }
-
 
 function drawMap(map) {
     /*

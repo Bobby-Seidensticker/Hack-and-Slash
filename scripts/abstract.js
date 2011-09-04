@@ -5,11 +5,13 @@ var ui = require('com.pageforest.hackandslash.ui');
 exports.extend({
     'onReady': onReady,
     'player': player,
-    'map': map
+    'map': map,
+    'mapSize': mapSize
 });
 
 var player;
 var map;
+var mapSize = [];
 var client;
 var app = {
     // Loading a document
@@ -34,7 +36,10 @@ function onReady () {
     map = sta.map;
     player = newPlayer();
 
+    var blockSize = 768 / map[0].length;
+    mapSize = [768, map.length * blockSize];
     ui.drawMap(map);
+    ui.onUpdate();
     tickInterval = setInterval(tick, 50);
 }
 
