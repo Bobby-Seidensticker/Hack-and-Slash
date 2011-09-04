@@ -1,22 +1,46 @@
+var clientLib = require('com.pageforest.client');
 var sta = require('com.pageforest.hackandslash.static');
 var ui = require('com.pageforest.hackandslash.ui');
 
 exports.extend({
     'onReady': onReady,
+    'player': player,
+    'map': map
 });
 
-var map;
 var player;
+var map;
+var client;
+var app = {
+    // Loading a document
+    setDoc: function(json) {
+        $('#blob').val(json.blob);
+    },
+
+    // Saving a document
+    getDoc: function() {
+        return {
+            "blob": $('#blob').val()
+        };
+    }
+};
+var tickInterval;
 
 function onReady () {
     handleAppCache();
     client = new clientLib.Client(app);
     client.addAppBar();
-    abs.init(client, exports);
     storage = client.storage;
-
     map = sta.map;
     player = newPlayer();
+
+    ui.drawMap(map);
+    tickInterval = setInterval(tick, 50);
+}
+
+function tick() {
+    player.pos += 8;
+    ui.onUpdate();
 }
 
 function newPlayer () {
@@ -28,4 +52,23 @@ function newPlayer () {
         'mana': 15,
         'deck': []
     };
+}
+
+// For offline - capable applications
+function handleAppCache() {
+    if (typeof applicationCache == 'undefined') {
+        return;
+    }
+    if (applicationCache.status == applicationCache.UPDATEREADY) {
+        applicationCache.swapCache();
+        location.reload();
+        return;
+    }
+    applicationCache.addEventListener('updateready', handleAppCache, false);
+}
+
+function getDocid() {
+    if (client.username) {
+        return client.username;
+    }
 }

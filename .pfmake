@@ -2,9 +2,12 @@
   "files": {
     "scripts/all.js": [
       "scripts/namespace-plus.js",
-      { "path": "scripts/ui.js", "namespace": "com.pageforest.hackandslash" },
-      { "path": "scripts/abstract.js", "namespace": "com.pageforest.hackandslash.abstract" },
-      { "path": "scripts/static.js", "namespace": "com.pageforest.hackandslash.static" }
+      { "path": "scripts/ui.js",
+          "namespace": "com.pageforest.hackandslash.ui" },
+      { "path": "scripts/abstract.js",
+          "namespace": "com.pageforest.hackandslash.abstract" },
+      { "path": "scripts/static.js",
+          "namespace": "com.pageforest.hackandslash.static" }
     ]
   },
   "minify": false,

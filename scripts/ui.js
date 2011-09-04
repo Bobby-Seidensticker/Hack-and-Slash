@@ -1,72 +1,14 @@
+var abs = require('com.pageforest.hackandslash.abstract');
+
 exports.extend({
-    'drawMap': drawMap
+    'drawMap': drawMap,
+    'onUpdate': onUpdate
 });
-
-var client;
-var app = {
-    // Loading a document
-    setDoc: function(json) {
-        $('#blob').val(json.blob);
-    },
-
-    // Saving a document
-    getDoc: function() {
-        return {
-            "blob": $('#blob').val()
-        };
-    }
-};
-var tickInterval;
-
-
 
 function onUpdate() {
     
 }
 
-function onKeyDown(e) {
-/*    switch (e.keyCode)
-    {
-    case 37: //left
-        e.preventDefault();
-        ms.move(3);
-        break;
-    case 38: //up
-        e.preventDefault();
-        ms.move(0);
-        break;
-    case 39: //right
-        e.preventDefault();
-        ms.move(1);
-        break;
-    case 40: //down
-        e.preventDefault();
-        ms.move(2);
-        break;
-    case 32: //space - shoot
-        e.preventDefault();
-        ms.shoot();
-        break;
-    case 68: //d - shoot
-        e.preventDefault();
-        ms.shoot();
-        break;
-    case 70: //f - punch
-        e.preventDefault();
-        ms.punch();
-    default:
-    }*/
-}
-
-/*var guy0 = new Image();
-guy0.src = 'images/guy0.png';
-var guy1 = new Image();
-guy1.src = 'images/guy1.png';
-var guy2 = new Image();
-guy2.src = 'images/guy2.png';
-var guy3 = new Image();
-guy3.src = 'images/guy3.png';
-*/
 
 function drawMap(map) {
     validateMap(map);
@@ -124,6 +66,7 @@ function drawMap(map) {
     console.log(map);
 }
 
+
 function validateMap(map) {
     var baseline = map[0].length;
     for(var i = 0; i < map.length; i++) {
@@ -133,24 +76,5 @@ function validateMap(map) {
         if(map[i].search("t") == -1) {
             console.log("AWW SHIT: line " + i + " does not have track");
         }
-    }
-}
-
-// For offline - capable applications
-function handleAppCache() {
-    if (typeof applicationCache == 'undefined') {
-        return;
-    }
-    if (applicationCache.status == applicationCache.UPDATEREADY) {
-        applicationCache.swapCache();
-        location.reload();
-        return;
-    }
-    applicationCache.addEventListener('updateready', handleAppCache, false);
-}
-
-function getDocid() {
-    if (client.username) {
-        return client.username;
     }
 }
