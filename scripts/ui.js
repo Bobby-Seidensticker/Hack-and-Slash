@@ -18,10 +18,10 @@ function init() {
 
 function onUpdate(player, mapSize) {
     var top = -mapSize[1] + viewSize + player.pos;
-    if (top >= 0) {
+    if (top > 0) {
         return;
     }
-    $map.css('top', top + 'px');
+    $map.css('-webkit-transform', 'translate(0px, ' + top + 'px)');
 }
 
 function drawMap(map) {

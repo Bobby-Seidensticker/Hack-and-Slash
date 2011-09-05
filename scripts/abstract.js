@@ -12,6 +12,7 @@ exports.extend({
 var player;
 var map;
 var mapSize = [];
+var blockSize;
 var client;
 var app = {
     // Loading a document
@@ -37,15 +38,15 @@ function onReady () {
     player = newPlayer();
     ui.init();
 
-    var blockSize = 768 / map[0].length;
+    blockSize = 768 / map[0].length;
     mapSize = [768, map.length * blockSize];
     ui.drawMap(map);
     ui.onUpdate(player, mapSize);
-    tickInterval = setInterval(tick, 200);
+    tickInterval = setInterval(tick, 50);
 }
 
 function tick() {
-    player.pos += 32;
+    player.pos += 8;
     ui.onUpdate(player, mapSize);
 }
 
