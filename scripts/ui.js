@@ -119,8 +119,12 @@ function validateMap(map) {
 function drawSidebar() {
     var sbWidth = 256;
     var sbHeight = 768;
-    var HPval = 30;
+    var HPval = 25;
     var HPmax = 30;
+    var HPratio = HPval/HPmax;
+    var mana = 15;
+    var manaMax = 20;
+    var manaRatio = mana/manaMax;
 
 
     var canvas = document.getElementById('sidebar');
@@ -131,15 +135,22 @@ function drawSidebar() {
     ctx.fillRect (0, 0, sbWidth, sbHeight);
 
     ctx.fillStyle = "rgb(255, 0, 0)";
-    ctx.fillRect (30, 30, sbWidth - 60, 30);
+    ctx.fillRect (30, 30, (sbWidth - 60) * HPratio, 30);
 
     ctx.strokeStyle = "rgb(0, 0, 0)";
     ctx.strokeRect (30, 30, sbWidth - 60, 30);
+
     ctx.fillStyle = "rgb(0, 0, 0)";
-    ctx.font = "arial bold 20px";
-    ctx.fillText = ("fuck!", sbWidth/2, 50);
+    ctx.font = "bold 20px arial";
+    ctx.textAlign = "center";
+    ctx.fillText(HPval + "/" + HPmax, sbWidth/2, 53);
 
     ctx.fillStyle = "rgb(0, 0, 255)";
-    ctx.fillRect (30, 75, sbWidth - 60, 30);
+    ctx.fillRect (30, 75, (sbWidth - 60) * manaRatio, 30);
     ctx.strokeRect (30, 75, sbWidth - 60, 30);
+
+    ctx.fillStyle = "rgb(0, 0, 0)";
+    ctx.font = "bold 20px arial";
+    ctx.textAlign = "center";
+    ctx.fillText(mana + "/" + manaMax, sbWidth/2, 98);
 }
