@@ -90,7 +90,7 @@ function drawMap(map) {
 
             if (line.charAt(j) == "t") {
                 ctx.fillStyle = "rgb(155, 155, 155)";
-            } else if(line.charAt(j) == "w") {
+            } else if(line.charAt(j) == "W") {
                 ctx.fillStyle = "rgb(0, 0, 200)";
             } else if (line.charAt(j) == " ") {
                 ctx.fillStyle = "rgb(100, 100, 0)";
