@@ -2,6 +2,7 @@ var clientLib = require('com.pageforest.client');
 var sta = require('com.pageforest.hackandslash.static');
 var ui = require('com.pageforest.hackandslash.ui');
 
+
 exports.extend({
     'onReady': onReady,
     'player': player,
@@ -36,23 +37,25 @@ function onReady () {
     storage = client.storage;
     map = sta.map();
     player = newPlayer();
-    ui.init();
-
     blockSize = 768 / map[0].length;
     mapSize = [768, map.length * blockSize];
+
+    ui.init(player, mapSize);
     ui.drawMap(map);
-    ui.onUpdate(player, mapSize);
-    tickInterval = setInterval(tick, 50);
+    ui.onUpdate();
+
 }
 
 function tick() {
-    player.pos += 8;
-    ui.onUpdate(player, mapSize);
+    player.pos += 3;
+    ui.modify(player);
 }
 
 function newPlayer () {
     return {
         'pos': 0,
+        'stopped': false,
+        'time': 0,
         'maxHp': 10,
         'hp': 10,
         'maxMana': 15,

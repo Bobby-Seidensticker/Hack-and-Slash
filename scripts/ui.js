@@ -1,27 +1,71 @@
 var abs = require('com.pageforest.hackandslash.abstract');
 
+// requestAnim shim layer by Paul Irish
+window.requestAnimFrame = (function(){
+    return  window.requestAnimationFrame   || 
+        window.webkitRequestAnimationFrame || 
+        window.mozRequestAnimationFrame    || 
+        window.oRequestAnimationFrame      || 
+        window.msRequestAnimationFrame     || 
+        function(/* function */ callback, /* DOMElement */ element){
+            window.setTimeout(callback, 1000 / 60);
+        };
+})();
+
 var $map;
 var $sidebar;
+var $sprites;
+var $all;
 var viewSize;
+var player;
+var mapSize;
 
 exports.extend({
     'drawMap': drawMap,
     'onUpdate': onUpdate,
-    'init': init
+    'init': init,
+    'modify': modify
 });
 
-function init() {
+function init(p, mSize) {
+    player = p;
+    mapSize = mSize;
     $map = $('#map');
     $sidebar = $('#sidebar');
+    $sprites = $('#sprites');
+    $all = $('#all');
     viewSize = 768;
+
+    onUpdate();
+    $('body').bind('keydown', onKey);
 }
 
-function onUpdate(player, mapSize) {
-    var top = -mapSize[1] + viewSize + player.pos;
-    if (top > 0) {
-        return;
+function onKey(evt) {
+    var enter = 13;
+    if (evt.keyCode == enter) {
+        
     }
-    $map.css('-webkit-transform', 'translate(0px, ' + top + 'px)');
+}
+
+function modify(p) {
+    if (player) {
+        player = p;
+    }
+}
+
+function onUpdate() {
+    requestAnimFrame(onUpdate);
+
+    var top = -mapSize[1] + viewSize + player.pos;
+    console.log('onUpdate, top: ' + top);
+    if (top < 0) {
+        $all.css('-webkit-transform', 'translate(0px, ' + top + 'px)');
+    }
+}
+
+function drawPlayer() {
+    var canvas = $('#sprits')[0];
+    canvas.width = viewSize;
 }
 
 function drawMap(map) {
@@ -32,10 +76,9 @@ function drawMap(map) {
     */
 
     validateMap(map);
-    var viewWidth = 768; 
-    var tilesize = viewWidth / map[0].length; 
+    var tilesize = viewSize / map[0].length; 
     var canvas = document.getElementById('map');
-    canvas.width = 768;
+    canvas.width = viewSize;
     canvas.height = tilesize * map.length;
     var ctx = canvas.getContext('2d');
 
@@ -58,7 +101,6 @@ function drawMap(map) {
         }
     }
 }
-
 
 function validateMap(map) {
     var baseline = map[0].length;

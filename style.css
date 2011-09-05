@@ -11,14 +11,23 @@ body {
   overflow: hidden;
 }
 
-.viewport canvas#map {
+.viewport div#all {
   position: absolute;
   left: 256px;
   top: 0px;
-  -webkit-transition: 0.065s all linear;
+  -webkit-transition: 0s all;
+}
+
+canvas#sprites {
+  position: absolute;
+  z-index: 2;
+}
+
+canvas#map {
+  position: absolute;
+  z-index: 1;
 }
 
 .viewport canvas#sidebar {
-  position: absolute;
   left: 0px;
 }
