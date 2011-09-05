@@ -31,6 +31,8 @@ function drawMap(map) {
     f - floor - drawn in dark yellow
     */
 
+    drawSidebar();
+    //HACK!!!
     validateMap(map);
     var viewWidth = 768; 
     var tilesize = viewWidth / map[0].length; 
@@ -70,4 +72,26 @@ function validateMap(map) {
             console.log("AWW SHIT: line " + i + " does not have track");
         }
     }
+}
+
+function drawSidebar() {
+    var sbWidth = 256;
+    var sbHeight = 768;
+    var canvas = document.getElementById('sidebar');
+    canvas.width = sbWidth;
+    canvas.height = sbHeight;
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = "rgb(155, 155, 155)";
+    ctx.fillRect (0, 0, sbWidth, sbHeight);
+
+    ctx.fillStyle = "rgb(255, 0, 0)";
+    ctx.fillRect (30, 30, sbWidth - 60, 30);
+
+    ctx.strokeStyle = "rgb(0, 0, 0)";
+    ctx.strokeRect (30, 30, sbWidth - 60, 30);
+
+
+    ctx.fillStyle = "rgb(0, 0, 255)";
+    ctx.fillRect (30, 75, sbWidth - 60, 30);
+    ctx.strokeRect (30, 75, sbWidth - 60, 30);
 }
