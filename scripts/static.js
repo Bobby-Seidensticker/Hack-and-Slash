@@ -18,7 +18,8 @@ function spells() {
       projectile - damage (of projectile), mana (cost)
       food - hp (amount healed), mana (amount recovered)
       dmgmulti (multiplies all damage done) - modifier (multiply damage by ____),
-      duration (in seconds), mana (cost)
+        duration (in seconds), mana (cost)
+      melee - (damage) - normal attack
     */
     var obj = {
         "projectile":
@@ -43,7 +44,11 @@ function spells() {
 
          {"modifier": 5,
           "duration": 5,
-          "mana": 5}]
+          "mana": 5}],
+        
+        "melee":
+        [{"damage": 1},
+         {"damage": 2}]
     };
     return obj;
 }
@@ -206,13 +211,42 @@ function map() {
            ];
 }
 
+/*
+Description of different monsters
+name: displayed name of monster (if we display it somewhere)
+level: level of monster, used for computing xp
+drops: array of possible drops
+movement: charge - monster advances toward player
+          stay - monster holds ground (and shoots)
+          (possible: 'retreat' move back as fires)
+attack:  card skill used to attack
+*/
+
 function monsters() {
     return {
         "goblin" : {"name": "Goblin Warrior", 
                     "level": 1,
-                    "drops": {"projectile":0},
+                    "drops": ["projectile0"],
                     "movement" : "charge",
-                    "attack": "melee"
+                    "attack": "melee0"
+                },
+        "troll" : {"name": "Troll", 
+                    "level": 2,
+                    "drops": ["food0", "dmgmulti0"],
+                    "movement" : "charge",
+                    "attack": "melee1"
+                },
+        "elf" : {"name": "Elven Archer", 
+                    "level": 3,
+                    "drops": ["projectile1", "dmgmulti2"],
+                    "movement" : "stay",
+                    "attack": "projectile1"
+                },
+        "turret" : {"name": "Turret", 
+                    "level": 5,
+                    "drops": ["projectile2", "food1"],
+                    "movement" : "stay",
+                    "attack": "projectile2"
                 }
     };
 }
