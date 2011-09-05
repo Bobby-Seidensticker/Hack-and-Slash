@@ -75,13 +75,13 @@ function stockDeck() {
 }
 
 function map() {
-    return [ "wwwwwwfffffffffftfffffffffwwwwww",
-             "wwwwwwfffffffffftfffffffffwwwwww",
-             "wwwwwwfffffffffftfffffffffwwwwww",
-             "wwwwwwfffffffffftfffffffffwwwwww",
-             "wwwwwwfffffffffftfffffffffwwwwww",
-             "wwwwwwfffffffffftfffffffffwwwwww",
-             "wwwwwwfffffffffftfffffffffwwwwww",
+    return [ "wwwwwwwwwwwwwwwwwtwwwwwwwwwwwwww",
+             "wwwwwwwwwwwwwwwwftfwwwwwwwwwwwww",
+             "wwwwwwwwwwwwwwfftfffwwwwwwwwwwww",
+             "wwwwwwwwwwwwfffftffffffwwwwwwwww",
+             "wwwwwwwwwwwffffftffffffffwwwwwww",
+             "wwwwwwwwwffffffftfffffffffwwwwww",
+             "wwwwwwwffffffffftfffffffffwwwwww",
              "wwwwwwfffffffffftfffffffffwwwwww",
              "wwwwwwfffffffffftfffffffffwwwwww",
              "wwwwwwfffffffffftfffffffffwwwwww",
