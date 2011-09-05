@@ -33,19 +33,20 @@ function onReady () {
     client = new clientLib.Client(app);
     client.addAppBar();
     storage = client.storage;
-    map = sta.map;
+    map = sta.map();
     player = newPlayer();
+    ui.init();
 
     var blockSize = 768 / map[0].length;
     mapSize = [768, map.length * blockSize];
     ui.drawMap(map);
-    ui.onUpdate();
-    tickInterval = setInterval(tick, 50);
+    ui.onUpdate(player, mapSize);
+    tickInterval = setInterval(tick, 200);
 }
 
 function tick() {
-    player.pos += 8;
-    ui.onUpdate();
+    player.pos += 32;
+    ui.onUpdate(player, mapSize);
 }
 
 function newPlayer () {

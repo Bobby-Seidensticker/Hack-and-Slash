@@ -1,16 +1,27 @@
 var abs = require('com.pageforest.hackandslash.abstract');
 
-var $map = $('#map');
-var $sidebar = $('#sidebar');
-var viewSize = 768;
+var $map;
+var $sidebar;
+var viewSize;
 
 exports.extend({
     'drawMap': drawMap,
-    'onUpdate': onUpdate
+    'onUpdate': onUpdate,
+    'init': init
 });
 
-function onUpdate() {
-    $map.css('top', -abs.mapSize[1] + viewSize + abs.player.pos);
+function init() {
+    $map = $('#map');
+    $sidebar = $('#sidebar');
+    viewSize = 768;
+}
+
+function onUpdate(player, mapSize) {
+    var top = -mapSize[1] + viewSize + player.pos;
+    if (top <= 0) {
+        return;
+    }
+    $map.css('top', top + 'px');
 }
 
 function drawMap(map) {
