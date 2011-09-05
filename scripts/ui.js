@@ -49,7 +49,7 @@ function drawMap(map) {
                 ctx.fillStyle = "rgb(155, 155, 155)";
             } else if(line.charAt(j) == "w") {
                 ctx.fillStyle = "rgb(0, 0, 200)";
-            } else if (line.charAt(j) == "f") {
+            } else if (line.charAt(j) == " ") {
                 ctx.fillStyle = "rgb(100, 100, 0)";
             } else {
                 ctx.fillStyle = "rgb(255, 255, 255)";
@@ -77,6 +77,10 @@ function validateMap(map) {
 function drawSidebar() {
     var sbWidth = 256;
     var sbHeight = 768;
+    var HPval = 30;
+    var HPmax = 30;
+
+
     var canvas = document.getElementById('sidebar');
     canvas.width = sbWidth;
     canvas.height = sbHeight;
@@ -89,7 +93,9 @@ function drawSidebar() {
 
     ctx.strokeStyle = "rgb(0, 0, 0)";
     ctx.strokeRect (30, 30, sbWidth - 60, 30);
-
+    ctx.fillStyle = "rgb(0, 0, 0)";
+    ctx.font = "arial bold 20px";
+    ctx.fillText = ("fuck!", sbWidth/2, 50);
 
     ctx.fillStyle = "rgb(0, 0, 255)";
     ctx.fillRect (30, 75, sbWidth - 60, 30);
