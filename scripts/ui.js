@@ -54,7 +54,7 @@ function modify(p) {
 }
 
 function onUpdate() {
-    requestAnimFrame(onUpdate);
+    //requestAnimFrame(onUpdate);
 
     var top = -mapSize[1] + viewSize + player.pos;
     console.log('onUpdate, top: ' + top);
